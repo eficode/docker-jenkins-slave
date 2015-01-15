@@ -6,7 +6,7 @@ fi
 
 if [ ! -f ~/slave.jar ]; then
 	if [ -n "$JENKINS_SECRET" ]; then
-		wget -O ~/slave.jar https://$MASTER_HOST:$MASTER_PORT/jnlpJars/slave.jar
+		wget -O ~/slave.jar https://$MASTER_HOST:$MASTER_PORT/jnlpJars/slave.jar --no-check-certificate
 	else
 		wget -O ~/slave.jar http://$MASTER_HOST:$MASTER_PORT/jnlpJars/slave.jar
 	fi
