@@ -1,4 +1,4 @@
-FROM java:openjdk-7u65-jdk
+FROM java:openjdk-8u40-jdk
 
 USER root
 RUN apt-get update
