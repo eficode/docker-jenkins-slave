@@ -22,7 +22,7 @@ ENV PATH /opt/phantomjs/bin:$PATH
 RUN apt-get install -y jmeter
 
 # Install Multi Mechanize
-RUN apt-get install -v python-matplotlib
+RUN apt-get install -y python-matplotlib
 RUN pip install multi-mechanize
 
 # Install Graphviz
