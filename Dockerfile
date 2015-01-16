@@ -1,8 +1,19 @@
-FROM java:openjdk-8u40-jdk
+FROM java:openjdk-8-jdk
 
 USER root
 RUN apt-get update
 RUN apt-get install -y wget git curl zip
+
+# Install Oracle's Java 8
+RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+RUN apt-get update
+RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+RUN apt-get install -y oracle-java8-installer
+
+#RUN update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+RUN update-alternatives --set java /usr/lib/jvm/java-8-oracle/jre/bin/java
 
 # Install Robot Framework with Selenium
 RUN apt-get install -y python-pip
