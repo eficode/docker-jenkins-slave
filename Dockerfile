@@ -33,7 +33,7 @@ RUN pip install multi-mechanize
 RUN apt-get install -y graphviz
 
 # Install NodeJS and npm
-RUN apt-get install -y nodejs npm
+RUN apt-get install -y nodejs npm nodejs-legacy
 
 # Clean Up apt
 RUN rm -rf /var/lib/apt/lists/*
