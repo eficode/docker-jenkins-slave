@@ -5,8 +5,6 @@ USER root
 RUN apt-get update
 RUN apt-get install -y wget git curl zip
 
-# Set default locale
-RUN echo "LANG=C.UTF-8; export LANG" | tee /etc/profile.d/locale.sh
 # Install Oracle's Java 8
 RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
 RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
@@ -47,6 +45,7 @@ VOLUME /var/jenkins_home
 
 # Set Environment for connection
 USER jenkins
+ENV LANG C.UTF-8
 ENV MASTER_HOST localhost
 ENV MASTER_PORT 80
 ENV SLAVE_NAME slave
