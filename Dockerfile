@@ -54,4 +54,4 @@ COPY slave.sh /usr/local/bin/slave.sh
 WORKDIR /var/jenkins_home
 
 # Start Slave
-ENTRYPOINT ["/usr/local/bin/slave.sh"]
+ENTRYPOINT exec /usr/local/bin/slave.sh
