@@ -20,7 +20,12 @@ RUN pip install robotframework
 RUN pip install robotframework-selenium2library
 
 # Install PhantomJS
-RUN apt-get install -y phantomjs
+RUN apt-get install -y g++ build-essential python flex bison gperf ruby perl libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev libpng-dev libjpeg-dev
+RUN git clone git://github.com/ariya/phantomjs.git
+WORKDIR phantomjs
+RUN git checkout 2.0
+RUN ./build.sh --confirm
+RUN cp bin/phantomjs /usr/bin/
 
 # Install JMeter
 RUN apt-get install -y jmeter
@@ -36,7 +41,7 @@ RUN apt-get install -y graphviz
 RUN apt-get install -y nodejs npm nodejs-legacy
 
 # Clean Up apt
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get clean
 
 # CREATE Jenkins User
 ENV JENKINS_HOME /var/jenkins_home
