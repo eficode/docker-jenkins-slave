@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SLAVE_NAME=jenkins-slave
+SLAVE_NAME=slave-jouni
 CONTAINER_VERSION=latest
-MASTER_HOST=docker.local
-MASTER_PORT=8080
+MASTER_HOST=52.28.55.31
+MASTER_PORT=8081
 #JENKINS_SECRET=
 
 docker stop $SLAVE_NAME
@@ -11,7 +11,7 @@ docker rm $SLAVE_NAME
 
 if [ ! -d ~/docker/$SLAVE_NAME ] ; then
   mkdir ~/docker_jenkins_home/$SLAVE_NAME
-  chown sote:docker ~/docker_jenkins_home/$SLAVE_NAME
+  chown docker:docker ~/docker_jenkins_home/$SLAVE_NAME
   chmod ug+rwx ~/docker_jenkins_home/$SLAVENAME
 fi
 
