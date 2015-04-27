@@ -1,12 +1,11 @@
 #!/bin/bash
 
 SLAVE_NAME=jenkins-slave
-CONTAINER_VERSION=snapshot
+CONTAINER_VERSION=latest
 MASTER_HOST=docker.local
 MASTER_PORT=8080
 #JENKINS_SECRET=
 
-docker pull eficode/jenkins-slave:$CONTAINER_VERSION
 docker stop $SLAVE_NAME
 docker rm $SLAVE_NAME
 
