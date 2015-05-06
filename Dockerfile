@@ -54,6 +54,7 @@ ENV LANG C.UTF-8
 ENV MASTER_HOST localhost
 ENV MASTER_PORT 80
 ENV SLAVE_NAME slave
+ENV JENKINS_SSL false
 COPY slave.sh /usr/local/bin/slave.sh
 WORKDIR /var/jenkins_home
 
