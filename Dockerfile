@@ -20,12 +20,7 @@ RUN pip install robotframework
 RUN pip install robotframework-selenium2library
 
 # Install PhantomJS
-RUN apt-get install -y g++ build-essential python flex bison gperf ruby perl libsqlite3-dev libfontconfig1-dev libicu-dev libfreetype6 libssl-dev libpng-dev libjpeg-dev
-RUN git clone git://github.com/ariya/phantomjs.git
-WORKDIR phantomjs
-RUN git checkout 2.0
-RUN ./build.sh --confirm
-RUN cp bin/phantomjs /usr/bin/
+RUN apt-get install -y phantomjs
 
 # Install JMeter
 RUN apt-get install -y jmeter
