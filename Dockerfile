@@ -39,8 +39,7 @@ RUN apt-get install -y nodejs npm nodejs-legacy
 RUN apt-get clean
 
 # CREATE Jenkins User
-ENV JENKINS_HOME /var/jenkins_home
-RUN useradd -d "$JENKINS_HOME" -u 1000 -m -s /bin/bash jenkins
+RUN useradd -d "/var/jenkins_home" -u 1000 -m -s /bin/bash jenkins
 VOLUME /var/jenkins_home
 
 # Set Environment for connection

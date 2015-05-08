@@ -22,11 +22,11 @@ if [ "$JENKINS_SECRET" != "" ]; then
 fi
 
 if [ ! -f ~/slave.jar ]; then
-	  echo wget -O ~/slave.jar $PROTOCOL://$MASTER_HOST:$MASTER_PORT/jnlpJars/slave.jar --no-check-certificate
+	  echo wget -O /var/jenkins_home/slave.jar $PROTOCOL://$MASTER_HOST:$MASTER_PORT/jnlpJars/slave.jar --no-check-certificate
 		wget -O ~/slave.jar $PROTOCOL://$MASTER_HOST:$MASTER_PORT/jnlpJars/slave.jar --no-check-certificate
 fi
 
 if [ -n "$JENKINS_SECRET" ]; then
-	echo 	exec java -jar ~/slave.jar -jnlpUrl $PROTOCOL://$MASTER_HOST:$MASTER_PORT/computer/$SLAVE_NAME/slave-agent.jnlp $SECRET -noCertificateCheck
+	echo 	exec java -jar /var/jenkins_home/slave.jar -jnlpUrl $PROTOCOL://$MASTER_HOST:$MASTER_PORT/computer/$SLAVE_NAME/slave-agent.jnlp $SECRET -noCertificateCheck
 	exec java -jar ~/slave.jar -jnlpUrl $PROTOCOL://$MASTER_HOST:$MASTER_PORT/computer/$SLAVE_NAME/slave-agent.jnlp $SECRET -noCertificateCheck
 fi
